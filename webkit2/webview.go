@@ -14,9 +14,9 @@ import (
 	"image"
 	"unsafe"
 
+	"github.com/tmsh/gojs"
 	"github.com/tmsh/gotk3/glib"
 	"github.com/tmsh/gotk3/gtk"
-	"github.com/tmsh/gojs"
 )
 
 // WebView represents a WebKit WebView.
@@ -181,7 +181,7 @@ const cairoImageSurfaceFormatARB32 = 0
 //
 // See also: webkit_web_view_get_snapshot at
 // http://webkitgtk.org/reference/webkit2gtk/stable/WebKitWebView.html#webkit-web-view-get-snapshot
-func (v *WebView) GetSnapshot(resultCallback func(result *image.RGBA, err error)) {
+func (v *WebView) GetSnapshot(resultCallback func(result *BGRA, err error)) {
 	var cCallback C.GAsyncReadyCallback
 	var userData C.gpointer
 	var err error
@@ -206,7 +206,8 @@ func (v *WebView) GetSnapshot(resultCallback func(result *image.RGBA, err error)
 			h := int(C.cairo_image_surface_get_height(snapResult))
 			stride := int(C.cairo_image_surface_get_stride(snapResult))
 			data := unsafe.Pointer(C.cairo_image_surface_get_data(snapResult))
-			rgba := &image.RGBA{C.GoBytes(data, C.int(stride*h)), stride, image.Rect(0, 0, w, h)}
+
+			rgba := &BGRA{C.GoBytes(data, C.int(stride*h)), stride, image.Rect(0, 0, w, h)}
 			resultCallback(rgba, nil)
 		}
 		cCallback, userData, err = newGAsyncReadyCallback(callback)
