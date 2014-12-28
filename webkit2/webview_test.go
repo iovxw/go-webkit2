@@ -7,9 +7,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/conformal/gotk3/glib"
-	"github.com/conformal/gotk3/gtk"
-	"github.com/sqs/gojs"
+	"github.com/tmsh/gotk3/glib"
+	"github.com/tmsh/gotk3/gtk"
+	"github.com/tmsh/gojs"
 )
 
 func TestNewWebView(t *testing.T) {

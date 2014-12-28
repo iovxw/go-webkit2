@@ -3,7 +3,7 @@ package webkit2
 import (
 	"runtime"
 
-	"github.com/conformal/gotk3/gtk"
+	"github.com/tmsh/gotk3/gtk"
 )
 
 func init() {
