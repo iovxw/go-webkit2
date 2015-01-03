@@ -123,6 +123,10 @@ func (v *WebView) RunJavaScript(script string, resultCallback func(result *gojs.
 	var err error
 	if resultCallback != nil {
 		callback := func(result *C.GAsyncResult) {
+			if result == nil {
+				resultCallback(nil, errors.New("Not able to get result: crash/nil"))
+				return
+			}
 			var jserr *C.GError
 			jsResult := C.webkit_web_view_run_javascript_finish(v.webView, result, &jserr)
 			if jsResult == nil {
