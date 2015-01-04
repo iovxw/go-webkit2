@@ -11,6 +11,7 @@ import "C"
 
 import (
 	"errors"
+	"fmt"
 	"image"
 	"unsafe"
 
@@ -124,7 +125,8 @@ func (v *WebView) RunJavaScript(script string, resultCallback func(result *gojs.
 	if resultCallback != nil {
 		callback := func(result *C.GAsyncResult) {
 			if result == nil {
-				resultCallback(nil, errors.New("Not able to get result: crash/nil"))
+				fmt.Println("result is nil")
+				resultCallback(nil, errors.New("Not able to get result: nil"))
 				return
 			}
 			var jserr *C.GError
