@@ -15,7 +15,7 @@ import (
 	"image"
 	"unsafe"
 
-	"github.com/tmsh/gojs"
+	"github.com/crazy2be/gojs"
 	"github.com/tmsh/gotk3/glib"
 	"github.com/tmsh/gotk3/gtk"
 )
