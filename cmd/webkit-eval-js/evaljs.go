@@ -9,8 +9,8 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/tmsh/go-webkit2/webkit2"
-	"github.com/tmsh/gojs"
+	"github.com/Bluek404/go-webkit2/webkit2"
+	"github.com/crazy2be/gojs"
 	"github.com/tmsh/gotk3/glib"
 	"github.com/tmsh/gotk3/gtk"
 )
